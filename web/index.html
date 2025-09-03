@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typeform Browser (Read-Only)</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Typeform Browser (Read-Only)</h1>
+    <form id="searchForm">
+      <input id="q" type="search" placeholder="Suche: form_id, Chiffre, Email" />
+      <button type="submit">Suchen</button>
+    </form>
+  </header>
+  <main>
+    <section>
+      <h2>Formulare</h2>
+      <input id="formFilter" type="search" placeholder="Formulare filtern" />
+      <ul id="formsList"></ul>
+    </section>
+    <section>
+      <h2>Responses</h2>
+      <div id="responses"></div>
+    </section>
+    <section>
+      <h2>Antworten (Details)</h2>
+      <div id="answers"></div>
+      <h3>Was haben andere geantwortet?</h3>
+      <div id="related"></div>
+    </section>
+    <section>
+      <h2>Chiffres</h2>
+      <button id="loadChiffres">Laden</button>
+      <div id="chiffres"></div>
+    </section>
+  </main>
+  <script src="/main.js" defer></script>
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-dialog" role="document">
+      <button class="modal-close" aria-label="Schließen">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+</body>
+</html>
