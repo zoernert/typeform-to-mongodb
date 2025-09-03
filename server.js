@@ -10,6 +10,7 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || process.env.BIND_ADDR; // optional bind address (e.g., 127.0.0.1 or 0.0.0.0)
 const MONGODB_URI = process.env.MONGODB_URI;
 const MONGODB_DB = process.env.MONGODB_DB || 'typeform';
 const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION || 'answers';
@@ -166,9 +167,15 @@ app.get('/api/answers/related', async (req, res) => {
 app.use('/', express.static(path.join(__dirname, 'web')));
 
 init().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Web server listening on http://localhost:${PORT}`);
-  });
+  if (HOST) {
+    app.listen(PORT, HOST, () => {
+      console.log(`Web server listening on http://${HOST}:${PORT}`);
+    });
+  } else {
+    app.listen(PORT, () => {
+      console.log(`Web server listening on http://localhost:${PORT}`);
+    });
+  }
 }).catch(err => {
   console.error('Failed to start server:', err);
   process.exit(1);

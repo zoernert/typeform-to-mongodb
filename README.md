@@ -29,6 +29,10 @@ npm run web
 # open http://localhost:3000
 ```
 
+Config via .env (optional):
+- PORT=3000
+- HOST=0.0.0.0  (or BIND_ADDR=0.0.0.0)
+
 Features:
 - Forms list (search by title or form_id)
 - Responses per form (shows “Form title — Chiffre”)
